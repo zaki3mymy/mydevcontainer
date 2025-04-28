@@ -1,0 +1,52 @@
+{
+    "name": "dev",
+    "dockerFile": "Dockerfile",
+    "runArgs": ["--name", "dev"],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                // Utility
+                "sohamkamani.code-eol",
+                "oderwat.indent-rainbow",
+                "mechatroner.rainbow-csv",
+                "ryanluker.vscode-coverage-gutters",
+                "vscode-icons-team.vscode-icons",
+                "streetsidesoftware.code-spell-checker",
+                "MS-CEINTL.vscode-language-pack-ja",
+                "redhat.vscode-yaml",
+                "ms-vscode.live-server",
+                // AI
+                "saoudrizwan.claude-dev",
+                // Git / GitHub
+                "mhutchie.git-graph",
+                "github.vscode-github-actions",
+                "me-dutour-mathieu.vscode-github-actions",
+                // Markdown
+                "shd101wyy.markdown-preview-enhanced",
+                "bierner.markdown-mermaid",
+                "bpruitt-goddard.mermaid-markdown-syntax-highlighting",
+                // Terraform
+                "hashicorp.terraform",
+                // Docker
+                "ms-azuretools.vscode-docker",
+                // Python
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "charliermarsh.ruff",
+                "njpwerner.autodocstring"
+            ],
+            "settings": {
+                "files.eol": "\n",
+                "code-eol.color": "#8e8e8e",
+                "[python]": {
+                    "editor.formatOnSave": true,
+                    "editor.codeActionsOnSave": {
+                        "source.fixAll": "explicit",
+                        "source.organizeImports": "explicit"
+                    },
+                    "editor.defaultFormatter": "charliermarsh.ruff"
+                }
+            }
+        }
+    }
+}

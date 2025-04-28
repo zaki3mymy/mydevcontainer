@@ -1,0 +1,45 @@
+[user]
+    email = zaki.last@gmail.com
+    name = zaki3mymy
+
+# https://blog.gitbutler.com/how-git-core-devs-configure-git/
+[column]
+    ui = auto
+[branch]
+    sort = -committerdate
+[tag]
+    sort = version:refname
+[init]
+    defaultBranch = main
+[diff]
+    algorithm = histogram
+    colorMoved = plain
+    mnemonicPrefix = true
+    renames = true
+[push]
+    default = simple
+    autoSetupRemote = true
+    followTags = true
+[fetch]
+    prune = true
+[help]
+    autocorrect = prompt
+[rerere]
+    enabled = true
+    autoupdate = true
+[merge]
+    conflictstyle = zdiff3
+[core]
+    excludesfile = ~/.gitignore
+    autocrlf = input
+[rebase]
+    autoStash = true
+    updateRefs = true
+
+[alias]
+    # https://qiita.com/kawasaki_dev/items/41afaafe477b877b5b73
+    graph = log --graph --pretty=format:'%x09%C(auto) %h %Cgreen %ar %Creset%x09by "%C(cyan ul)%an%Creset" %x09%C(auto)%s %d'
+    # https://qiita.com/hajimeni/items/73d2155fc59e152630c4
+    vacuum-branch = "!f () { git checkout $1; git branch --merged|egrep -v '\\*|develop|main'|xargs git branch -d; };f"
+    # https://zenn.dev/scirexs/articles/3f3426c85c8fe6
+    vacuum = "!f () { git reflog expire --expire-unreachable=now --all; git gc --prune=now; };f"

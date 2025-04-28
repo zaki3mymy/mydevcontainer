@@ -33,7 +33,8 @@
                 "ms-python.python",
                 "ms-python.vscode-pylance",
                 "charliermarsh.ruff",
-                "njpwerner.autodocstring"
+                "njpwerner.autodocstring",
+                "ms-toolsai.jupyter"
             ],
             "settings": {
                 "files.eol": "\n",

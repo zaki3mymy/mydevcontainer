@@ -1,10 +1,14 @@
 {
     "name": "dev",
     "dockerFile": "Dockerfile",
-    "runArgs": ["--name", "dev"],
+    "runArgs": [
+        "--name=dev",
+        "--network=localstack"
+    ],
     "mounts": [
         {"type": "bind", "source": "/var/run/docker.sock", "target": "/var/run/docker.sock"}
     ],
+    "initializeCommand": "docker network inspect localstack || docker network create localstack",
     "customizations": {
         "vscode": {
             "extensions": [

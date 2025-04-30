@@ -34,6 +34,12 @@ RUN curl -sSLo ./terraform-docs.tar.gz https://terraform-docs.io/dl/v0.19.0/terr
 RUN apt install -y nodejs npm
 RUN npm install -g n
 
+## Install Docker
+RUN apt install -y apt-transport-https ca-certificates gnupg-agent software-properties-common
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - \
+    && add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" -y \
+    && apt update && apt install -y docker-ce docker-ce-cli containerd.io
+
 
 #### main
 FROM ubuntu:latest
@@ -66,3 +72,6 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
     unzip awscliv2.zip && \
     ./aws/install && \
     rm -f awscli.zip && rm -r ./aws/
+
+## Install Docker
+COPY --from=builder /usr/bin/docker /usr/bin/

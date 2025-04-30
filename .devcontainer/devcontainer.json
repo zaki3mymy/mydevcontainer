@@ -2,6 +2,9 @@
     "name": "dev",
     "dockerFile": "Dockerfile",
     "runArgs": ["--name", "dev"],
+    "mounts": [
+        {"type": "bind", "source": "/var/run/docker.sock", "target": "/var/run/docker.sock"}
+    ],
     "customizations": {
         "vscode": {
             "extensions": [

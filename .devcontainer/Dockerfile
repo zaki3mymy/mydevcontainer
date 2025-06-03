@@ -75,3 +75,11 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 
 ## Install Docker
 COPY --from=builder /usr/bin/docker /usr/bin/
+
+## Install git-secrets
+RUN apt install -y build-essential
+RUN git clone https://github.com/awslabs/git-secrets.git \
+    && cd git-secrets \
+    && make install \
+    && git secrets --register-aws --global \
+    && cd .. && rm -rf git-secrets

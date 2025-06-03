@@ -37,6 +37,7 @@
                 // Python
                 "ms-python.python",
                 "ms-python.vscode-pylance",
+                "ms-python.mypy-type-checker",
                 "charliermarsh.ruff",
                 "njpwerner.autodocstring",
                 "ms-toolsai.jupyter"

@@ -38,7 +38,7 @@ RUN npm install -g n
 RUN apt install -y apt-transport-https ca-certificates gnupg-agent software-properties-common
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - \
     && add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" -y \
-    && apt update && apt install -y docker-ce docker-ce-cli containerd.io
+    && apt update && apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
 
 #### main
@@ -75,6 +75,7 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 
 ## Install Docker
 COPY --from=builder /usr/bin/docker /usr/bin/
+COPY --from=builder /usr/libexec/docker/cli-plugins/docker-compose /usr/libexec/docker/cli-plugins/docker-compose
 
 ## Install git-secrets
 RUN apt install -y build-essential

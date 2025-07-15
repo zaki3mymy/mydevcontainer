@@ -84,3 +84,6 @@ RUN git clone https://github.com/awslabs/git-secrets.git \
     && make install \
     && git secrets --register-aws --global \
     && cd .. && rm -rf git-secrets
+
+## Install Claude Code
+RUN npm install -g @anthropic-ai/claude-code

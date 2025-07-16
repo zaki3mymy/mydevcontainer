@@ -86,4 +86,7 @@ RUN git clone https://github.com/awslabs/git-secrets.git \
     && cd .. && rm -rf git-secrets
 
 ## Install Claude Code
-RUN npm install -g @anthropic-ai/claude-code
+RUN apt install -y nano \
+    && npm install -g @anthropic-ai/claude-code
+### Alias for claude-code usage
+RUN alias ccusage='npx ccusage@latest'

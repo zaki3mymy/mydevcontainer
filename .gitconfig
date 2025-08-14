@@ -29,6 +29,7 @@
     autoupdate = true
 [merge]
     conflictstyle = zdiff3
+    ff = false
 [core]
     excludesfile = ~/.gitignore
     autocrlf = input

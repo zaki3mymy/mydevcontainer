@@ -86,7 +86,7 @@ RUN git clone https://github.com/awslabs/git-secrets.git \
     && cd .. && rm -rf git-secrets
 
 ## Install Claude Code
-RUN apt install -y nano \
-    && npm install -g @anthropic-ai/claude-code
-### Alias for claude-code usage
-RUN alias ccusage='npx ccusage@latest'
+RUN npm install -g @anthropic-ai/claude-code
+### Settings for Claude Code
+RUN echo "export EDITOR=vim" >> ~/.bashrc \
+    && alias ccusage='npx -y ccusage@latest'

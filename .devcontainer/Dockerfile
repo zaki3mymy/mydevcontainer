@@ -45,7 +45,7 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - \
 FROM ubuntu:latest
 
 RUN apt update && apt upgrade -y
-RUN apt install -y git vim curl zip unzip
+RUN apt install -y git vim curl zip unzip jq
 
 ## Install uv
 # ref: https://docs.astral.sh/uv/getting-started/installation/

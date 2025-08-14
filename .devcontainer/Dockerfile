@@ -40,6 +40,10 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - \
     && add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" -y \
     && apt update && apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
+## Install similarity-py
+ENV PATH="$PATH:/root/.cargo/bin"
+RUN curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain stable
+RUN cargo install similarity-py
 
 #### main
 FROM ubuntu:latest
@@ -50,7 +54,7 @@ RUN apt install -y git vim curl zip unzip jq
 ## Install uv
 # ref: https://docs.astral.sh/uv/getting-started/installation/
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
-    echo "source $HOME/.local/bin/env" << ~/.bashrc && \
+    echo "source $HOME/.local/bin/env" >> ~/.bashrc && \
     echo 'eval "$(uv generate-shell-completion bash)"' >> ~/.bashrc
 
 ## Install Terraform
@@ -90,3 +94,7 @@ RUN npm install -g @anthropic-ai/claude-code
 ### Settings for Claude Code
 RUN echo "export EDITOR=vim" >> ~/.bashrc \
     && echo "alias ccusage='npx -y ccusage@latest'" >> ~/.bashrc
+
+## Install similarity-py
+COPY --from=builder /root/.cargo/bin/similarity-py /root/.cargo/bin/similarity-py
+RUN echo "alias similarity-py='/root/.cargo/bin/similarity-py'" >> ~/.bashrc

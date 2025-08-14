@@ -5,6 +5,7 @@
         "--name=dev",
         "--network=localstack"
     ],
+    "appPort": ["8080:8080", "5432:5432"],
     "mounts": [
         {"type": "bind", "source": "/var/run/docker.sock", "target": "/var/run/docker.sock"}
     ],
@@ -25,6 +26,7 @@
                 "be5invis.toml",
                 // AI
                 "saoudrizwan.claude-dev",
+		"Anthropic.claude-code",
                 // Git / GitHub
                 "mhutchie.git-graph",
                 "github.vscode-github-actions",

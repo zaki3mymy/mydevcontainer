@@ -49,7 +49,7 @@ RUN cargo install similarity-py
 FROM ubuntu:latest
 
 RUN apt update && apt upgrade -y
-RUN apt install -y git vim curl zip unzip jq
+RUN apt install -y git vim curl zip unzip jq tmux
 
 ## Install uv
 # ref: https://docs.astral.sh/uv/getting-started/installation/

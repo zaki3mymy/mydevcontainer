@@ -16,5 +16,4 @@ echo "export NTFY_TOPIC=$NTFY_TOPIC" >> /root/.bashrc
 mkdir -p ~/tools
 cp -r ./tools ~/
 chmod +x ~/tools/*
-echo "export PATH=$PATH:/root/tools" >> /root/.bashrc
-
+echo "export PATH=\$PATH:/root/tools" >> /root/.bashrc

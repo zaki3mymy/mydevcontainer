@@ -11,3 +11,10 @@ cp ./.gitignore /root/
 cp -r ./.claude /root/
 chmod a+x -R ~/.claude/scripts/
 echo "export NTFY_TOPIC=$NTFY_TOPIC" >> /root/.bashrc
+
+# install tools
+mkdir -p ~/tools
+cp -r ./tools ~/
+chmod +x ~/tools/*
+echo "export PATH=$PATH:/root/tools" >> /root/.bashrc
+

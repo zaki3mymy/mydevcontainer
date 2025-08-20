@@ -200,5 +200,5 @@ mkdir -p {src,tests}/$PROJECT_NAME
 
 # dev-tools をマージする
 git switch main
-git merge dev-tools
+git merge dev-tools -m "Merge branch 'dev-tools'"
 git branch -d dev-tools

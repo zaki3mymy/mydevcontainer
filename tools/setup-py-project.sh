@@ -83,6 +83,7 @@ git commit -m "pre-commit の設定を追加"
 
 # ruff の設定
 cat << EOF >> pyproject.toml
+
 # linter / formatter
 [tool.ruff]
 line-length = 100
@@ -92,28 +93,28 @@ quote-style = "double"
 indent-style = "space"
 [tool.ruff.lint.isort]
 known-first-party = []
-
 EOF
 git add pyproject.toml
 git commit -m "ruff の設定を追記"
 
 # mypy の設定
 cat << EOF >> pyproject.toml
+
 # type-checker
 [tool.mypy]
 check_untyped_defs = true  # 関数の引数/戻り値の型をチェックする
-
 EOF
 git add pyproject.toml
 git commit -m "mypy の設定を追記"
 
 # pytest の設定
 cat << EOF >> pyproject.toml
+
+# test
 [tool.pytest.ini_options]
 pythonpath = ["src"]
 testpaths = ["tests"]
 addopts = "--cov src --cov-branch --cov-report term-missing --cov-report xml --cov-report html"
-
 EOF
 git add pyproject.toml
 git commit -m "pytest の設定を追記"

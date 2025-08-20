@@ -29,6 +29,8 @@ git add .
 git commit -m "initial commit"
 git switch -c dev-tools
 uv add --group dev pytest pytest-cov ruff mypy pre-commit
+git add pyproject.toml uv.lock
+git commit -m "add dev tools: pytest, ruff, mypy, pre-commit"
 
 # ruff の設定
 cat << EOF >> pyproject.toml
@@ -149,3 +151,4 @@ mkdir -p {src,tests}/$PROJECT_NAME
 # dev-tools をマージする
 git switch main
 git merge dev-tools
+git branch -d dev-tools

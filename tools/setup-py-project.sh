@@ -32,6 +32,55 @@ uv add --group dev pytest pytest-cov ruff mypy pre-commit
 git add pyproject.toml uv.lock
 git commit -m "add dev tools: pytest, ruff, mypy, pre-commit"
 
+# pre-commit の設定
+cat << EOF > .pre-commit-config.yaml
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+    -   id: trailing-whitespace
+    -   id: end-of-file-fixer
+    -   id: mixed-line-ending
+        args: [--fix=lf]
+
+-   repo: local
+    hooks:
+    -   id: lint
+        name: Lint Python files
+        entry: uv run ruff check
+        language: python
+        types: [file, python]
+        exclude: ^(tests/|scripts/).*$
+
+    -   id: type-check
+        name: Type check Python files
+        entry: uv run mypy
+        language: python
+        types: [file, python]
+        exclude: ^(tests/|scripts/).*$
+
+    -   id: aws-credential-check
+        name: Check for AWS credentials
+        entry: git secrets --scan
+        language: system
+        types: [text]
+
+    -   id: unit-test
+        name: Run unit tests
+        entry: uv run pytest --cov src --cov-branch --cov-report term-missing --cov-report xml --cov-report html
+        language: python
+        types: [file, python]
+        stages: [pre-merge-commit]
+        pass_filenames: false
+
+default_install_hook_types: [pre-commit, pre-merge-commit]
+EOF
+uv run pre-commit install --install-hooks
+git add .pre-commit-config.yaml
+git commit -m "pre-commit の設定を追加"
+
 # ruff の設定
 cat << EOF >> pyproject.toml
 # linter / formatter
